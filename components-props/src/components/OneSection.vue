@@ -1,0 +1,21 @@
+<script setup lang="ts">
+interface Props {
+  title: String;
+  content: String;
+}
+defineProps<Props>();
+</script>
+
+<template>
+  <section class="box">
+    <h4>{{ title }}</h4>
+    <p>{{ content }}</p>
+  </section>
+</template>
+
+<style>
+.box {
+  border: green 1px solid;
+  margin: 10px;
+}
+</style>
