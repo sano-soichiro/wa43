@@ -11,7 +11,6 @@ const isModalOpen = ref<boolean>(false);
 type Emits = {
   open: [open: boolean];
 };
-const emit = defineEmits<Emits>();
 
 const open = (id: number): void => {
     isModalOpen.value = true;
