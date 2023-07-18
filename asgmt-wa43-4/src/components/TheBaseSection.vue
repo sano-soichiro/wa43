@@ -8,10 +8,6 @@ const personList = inject("personList") as Map<number, Member>;
 const editId = ref(1);
 const isModalOpen = ref<boolean>(false);
 
-type Emits = {
-  open: [open: boolean];
-};
-
 const open = (id: number): void => {
     isModalOpen.value = true;
     editId.value = id;
