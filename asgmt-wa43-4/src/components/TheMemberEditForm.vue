@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, inject } from "vue";
+import { ref, computed, inject, reactive } from "vue";
 import type { Member } from "../interfaces";
 
 interface Props {
@@ -16,13 +16,12 @@ const editId = props.id;
 const personList = inject("personList") as Map<number, Member>;
 const localList = personList.get(editId) as Member;
 
+const list: Member = reactive(
+  { id: localList.id, name: localList.name,mail: localList.mail,tel: localList.tel,note: localList.note}
+);
+
 const saveList = (): void => {
-    const setData = personList.get(props.id) as Member;
-    setData.name = localList.name;
-    setData.mail = localList.mail;
-    setData.tel = localList.tel;
-    setData.note = localList.note;
-    personList.set(props.id, setData);
+    personList.set(props.id, list);
     emit("hidden");
 };
 </script>
@@ -37,24 +36,22 @@ const saveList = (): void => {
       </li>
       <li>
         <h3>名前</h3>
-        <input type="text" v-model="localList.name" required>
+        <input type="text" v-model="list.name" required>
       </li>
       <li>
         <h3>メールアドレス</h3>
-        <input type="text" v-model="localList.mail" required>
+        <input type="text" v-model="list.mail" required>
       </li>
       <li>
         <h3>電話番号</h3>
-        <input type="text" v-model="localList.tel" required>
+        <input type="text" v-model="list.tel" required>
       </li>
       <li>
         <h3>備考</h3>
-        <textarea v-model="localList.note"></textarea>
-      </li>
-      <li>
-        <button type="submit">変更</button>
+        <textarea v-model="list.note"></textarea>
       </li>
     </ul>
+    <button type="submit">変更</button>
   </form>
 </template>
 

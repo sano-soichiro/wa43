@@ -44,10 +44,8 @@ const localNote = computed(
         <h3>備考</h3>
         <p>{{ localNote }}</p>
       </li>
-      <li>
-        <button type="button" v-on:click="editPerson(id)">このメンバー情報を編集</button>
-      </li>
     </ul>
+    <button type="button" v-on:click="editPerson(id)">このメンバー情報を編集</button>
   </section>
 </template>
 

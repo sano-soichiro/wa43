@@ -6,7 +6,7 @@ import TheMemberEditForm from "./TheMemberEditForm.vue";
 
 const personList = inject("personList") as Map<number, Member>;
 const editId = ref(1);
-const isModalOpen = ref<boolean>(false);
+const isModalOpen = ref(false);
 
 const open = (id: number): void => {
     isModalOpen.value = true;
